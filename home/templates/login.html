@@ -1,0 +1,62 @@
+{% load static%}
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="{% static 'assets/favicon/LOGO16.png' %}">
+    <title>ReadBook</title>
+    <link rel="stylesheet" href="{% static 'css/simplebar.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/feather.css' %}">
+    <link rel="stylesheet" href="{% static 'css/daterangepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'css/app-light.css' %}" id="lightTheme">
+  </head>
+  <body class="light" style="background-color: #FBB91C;">
+    <div class="block">
+      <div class="square"> 
+      <div class="wrapper vh-100">
+        <div class="row align-items-center h-100">
+          
+          <form class="col-lg-3 col-md-4 col-10 mx-auto text-center" action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            <a class="navbar-brand mx-auto mt-2 flex-fill text-center w-50 mb-4" >
+              <img src="{% static 'assets/favicon/LOGOg.png' %}" class=" card-img-top mb-4 " alt="logo ReadBook">
+            </a>
+            <div class="form-group">
+              <div class="input-ip">
+                <input type="text" style="border-radius:25px;" id="fname" class="form-control form-control-lg input-ip " placeholder="username" name="username" required="" >
+              </div>
+            </div>
+            <div class="form-group ">
+              
+              <input type="password" style="border-radius:25px;" id="inputPassword" class="form-control form-control-lg" placeholder="Senha"name="senha" required="">
+            </div>
+            
+            <div class="">
+              <label class="align-top" >
+                <a href="/auth/register/" style="color: #000;" class="m-1 align-basiline" >Sing-Up</label>
+            </div>
+            <button class="btn btn-lg btn-block" style="color: #000; border-radius: 25px; background-color: #FAA426;" type="submit">Login</button>
+          </form>
+        </div>
+      </div>
+      </div>
+    </div>
+    <script src="{% static 'js/jquery.min.js'%}"></script>
+    <script src="{% static 'js/popper.min.js'%}"></script>
+    <script src="{% static 'js/moment.min.js'%}"></script>
+    <script src="{% static 'js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'js/simplebar.min.js'%}"></script>
+    <script src="{% static 'js/daterangepicker.js'%}"></script>
+    <script src="{% static 'js/jquery.stickOnScroll.js'%}"></script>
+    <script src="{% static 'js/tinycolor-min.js'%}"></script>
+    <script src="{% static 'js/config.js'%}"></script>
+    <script src="{% static 'js/apps.js'%}"></script>
+    
+  </body>
+</html>
+</body>
+</html>

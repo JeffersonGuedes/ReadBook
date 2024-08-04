@@ -1,0 +1,62 @@
+{% extends 'base.html'%}
+{% block content%}
+        <div class="container-fluid">
+          <div class="row justify-content-center">
+            <div class="col-12">
+              <h2 class="mb-2 page-title">Lista de Projetos</h2>
+              <div class="col-md-12 p-0 m-0">
+                <div class="col m-0 p-0" style="text-align: right;" >
+                  <div class="card-body">
+                    <a href='/auth/livro/create/'><button type="submit" class="btn btn-primary"> Adicionar</button></a>
+                  </div>
+                </div>
+              </div>
+              <div class="row my-1">
+                <!-- Small table -->
+                <div class="col-md-12">
+                  <div class="card shadow">
+                    <div class="card-body">
+                      <!-- table -->
+                      <table class="table datatables " id="dataTable-1">
+                        <thead>
+                          <tr>
+                            <th class="col-0">ID</th>
+                            <th class="col-3">Título</th>
+                            <th class="col-5">Descrição</th>
+                            <th class="col-2">Autor</th>
+                            <th class="col-1">Formato</th>
+                            <th class="col-1">Preço</th>
+                            <th class="col-0">Ações</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {% for livro in livros %}
+                          <tr>
+                            <td>{{ livro.id }}</td>
+                            <td>{{ livro.titulo }}</td>
+                            <td>{{ livro.descricao }}</td>
+                            <td>{{ livro.autor }}</td>
+                            <td>{{ livro.formato }}</td>
+                            <td>{{ livro.preco }}</td>
+                            <td><button class="btn btn-sm dropdown-toggle more-horizontal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="text-muted sr-only">Ações</span>
+                              </button>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="{% url 'editar' livro.id %}">Editar</a>
+                                <a class="dropdown-item" href="{% url 'delete' livro.id %}">Remover</a>
+                              </div>
+                            </td>
+                          </tr>
+                          {% endfor %}
+                          
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div> <!-- simple table -->
+              </div> <!-- end section -->
+            </div> <!-- .col-12 -->
+          </div> <!-- .row -->
+        </div> <!-- .container-fluid -->
+    {% endblock %}
+   
