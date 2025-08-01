@@ -1,0 +1,92 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-12">
+      <h2 class="page-title">Cadastrar Livros</h2>
+      <div class="card shadow mb-0">
+        <form action="{% url 'salvar'%}" method="POST" >
+          {% csrf_token %}
+          <div class="card-header">
+            <strong class="card-title">Adicionar novo livro</strong>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6 mb-0 needs-validation">
+                <div class="form-group" >
+                  <label for="simpleinput">Nome do Livro</label>
+                  <input type="text" id="simpleinput" name="nome" class="form-control" required/>
+                </div>
+                <div class="form-group" >
+                  <label for="simpleinput">Nome do Autor</label>
+                  <input type="text" id="simpleinput" name="nome_autor" class="form-control" />
+                </div>
+                <div class="form-group mb-3">
+                  <label for="datetimes">Data publicação</label>
+                  <input class=" date form-control" id="datetimes" name='data_publicacao' type="date" name="date">
+                </div>
+                <div class="form-group" >
+                  <label for="simpleinput">Editora</label>
+                  <input type="text" id="simpleinput" name="editora" class="form-control" />
+                </div>
+                <div class="form-group mb-3">
+                  <label for="example-number6">Número de Paginas</label>
+                  <input class="form-control" id="example-number7" type="number" name="num_pag" >
+                </div>
+              </div>  
+              <!-- segunda coluna-->
+              <div class="col-md-6 mb-0">
+                <div class="needs-validation">
+                  <div class="form-group" >
+                    <label for="simpleinput">Gênero</label>
+                    <input type="text" id="simpleinput" name="genero" class="form-control" />
+                  </div>
+                  <div class="form-group mb-3"> 
+                    <label for="simpleinput1">Idioma</label>
+                    <input type="text" id="simpleinput1" name="idioma" class="form-control" />
+                  </div>
+                  <div class="form-group mb-3"> 
+                    <label for="simple-select4">Formato</label>
+                    <select class="form-control select4" name="formato" id="simple-select4">
+                      <optgroup>
+                        <option value=""></option>
+                        <option value="Fisico">Físico</option>
+                        <option value="Digital">Digital</option>
+                      </optgroup>
+                    </select>
+                  </div>
+                  <div class="form-group mb-3"> 
+                    <label for="simpleinput1">Preço</label>
+                    <input type="text" id="simpleinput1" name="preco" class="form-control" />
+                  </div>
+                  <div class="form-group mb-3"> 
+                    <label for="simpleinput1">Capa</label>
+                    <input type="text" id="simpleinput1" name="capa" class="form-control" />
+                  </div>
+                </div>
+              </div>
+            </div>  
+          </div>
+          <!-- end section -->
+
+          <div class="row mb-6 mx-2">
+            <div class="col-md-12 mb-3">
+              <div class="form-group mb-2 mt-1">
+                <label for="example-helping">Descrição</label>
+                <input type="text" id="example-helping" class="form-control" name="descricao" placeholder="Motivo da criação do projeto.">
+              </div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-start mx-4">
+            <button class="btn btn-primary mb-3 rounded-4" type="submit">
+              Salvar
+            </button>
+          </div>
+        </form>
+        <!-- end section -->
+      </div>
+      <!-- .col-12 -->
+    </div>
+  </div>
+    <!-- .row -->
+</div>
+{% endblock content %}
