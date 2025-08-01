@@ -93,6 +93,10 @@ if not DEBUG:
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
     X_FRAME_OPTIONS = 'DENY'
+    
+    # Configurações adicionais do WhiteNoise para produção
+    WHITENOISE_MANIFEST_STRICT = False
+    WHITENOISE_SKIP_COMPRESS_EXTENSIONS = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'zip', 'gz', 'tgz', 'bz2', 'tbz', 'xz', 'br']
 
 ROOT_URLCONF = 'core.urls'
 
@@ -189,13 +193,14 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, "./home/static/")]
 # Para produção na Vercel
 if not DEBUG:
     STATIC_ROOT = BASE_DIR / 'staticfiles_build' / 'static'
+    # Configuração simples para produção sem manifest
+    STATICFILES_STORAGE = 'whitenoise.storage.StaticFilesStorage'
 else:
     STATIC_ROOT = BASE_DIR / 'staticfiles'
+    # Para desenvolvimento, usa configuração simples
+    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 STATIC_URL = '/static/'
-
-# Configuração do WhiteNoise para servir arquivos estáticos
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

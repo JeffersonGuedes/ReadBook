@@ -1,0 +1,13 @@
+.git
+.gitignore
+.dockerignore
+Dockerfile
+.env
+README.md
+.venv
+__pycache__
+*.pyc
+.DS_Store
+.vscode
+staticfiles
+media
