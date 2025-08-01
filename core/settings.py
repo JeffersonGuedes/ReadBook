@@ -190,17 +190,20 @@ USE_TZ = True
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "./home/static/")]
 
-# Para produção na Vercel
-if not DEBUG:
-    STATIC_ROOT = BASE_DIR / 'staticfiles_build' / 'static'
-    # Configuração simples para produção sem manifest
-    STATICFILES_STORAGE = 'whitenoise.storage.StaticFilesStorage'
-else:
-    STATIC_ROOT = BASE_DIR / 'staticfiles'
-    # Para desenvolvimento, usa configuração simples
-    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
-
+# Configuração unificada para static files
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Para produção
+if not DEBUG:
+    # Use WhiteNoise para servir arquivos estáticos
+    STATICFILES_STORAGE = 'whitenoise.storage.StaticFilesStorage'
+    # Configurações do WhiteNoise
+    WHITENOISE_USE_FINDERS = True
+    WHITENOISE_AUTOREFRESH = True
+else:
+    # Para desenvolvimento
+    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
